@@ -3,6 +3,7 @@
 このプロジェクトは、IBM Watson Natural Language Classifier (NLC) を使用したFAQ自動応答アプリです。
 
 ## 【実行環境】
+
 - Runtime : Node-RED (Node.js)
 - Services :
     - Cloudant NoSQL DB
@@ -19,7 +20,9 @@
 1. 環境が整ったのち、手順５でデモアプリを起動する。
 
 ## 【FAQデータ形式】
+
 ### 1. 回答データ
+
 - JSON形式で定義します。データ項目はclass_name, answer, ref_url の3つです。
     - class_name : 一意なFAQのID
     - answer : 回答内容
@@ -29,6 +32,7 @@
 - utf-8で保存してください。
 
 #### 設定例
+
 ~~~~
 { "class_name" : "FAQ001", "answer" : "よくある質問その１の回答です。詳細はURLをご参照ください。", "ref_url" : "http://www.foo.bar.com/faq/001"},
 { "class_name" : "FAQ002", "answer" : "よくある質問その２の回答です。詳細はURLをご参照ください。", "ref_url" : "http://www.foo.bar.com/faq/002"},
@@ -36,6 +40,7 @@
 ~~~~
 
 ### 2. 質問データ
+
 - CSV形式で定義します。データ項目は、質問文, class_name の２つです。
     - 質問文 : 回答を導き出すための質問を文章で登録します。
     - class_name : 回答データのclass_nameに対応します。
@@ -43,6 +48,7 @@
 - utf-8で保存してください。
 
 #### 設定例
+
 ~~~~
 回答データ001に対する質問文その１です, FAQ001
 回答データ001に対する別の表現の質問文です, FAQ001
@@ -50,13 +56,16 @@
 ~~~~
 
 ### 【データの登録方法】
+
 #### 1. 回答データの登録
+
 1. JSON形式で回答データファイルを作成する。(utf-8)
 1. Node-REDトップページにある手順3のリンクで登録画面を開き、回答データファイルを送信する。
 1. 正常終了のメッセージ画面が表示すれば登録完了。
 1. 登録エラーになった場合、Node-REDのフローエディタでdebugにエラーが出力されているか確認する。
 
 #### 2. 質問データの登録
+
 1. NLC ツールキット(ベータ版)を使用する場合
     1. BluemixコンソールからNLCサービスの管理画面に遷移し、『Access the beta toolkit』のボタンをクリック
     1. Login画面が表示された場合は、『Sign in with Bluemix』リンクをクリック
@@ -72,4 +81,5 @@
     1. 上記で表示されたClassifier IDを引数に、classifier.bashを実行し、statusが『Available』になれば、学習完了
 
 ### 【フロー定義】
+
 - Node-REDフローエディタを開き、NLCノードのClassifier IDに学習済みのClassifier IDをセットしてDeployする
