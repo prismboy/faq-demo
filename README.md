@@ -29,9 +29,12 @@
 - utf-8で保存してください。
 
 #### 設定例
-`{ "class_name" : "FAQ001", "answer" : "よくある質問その１の回答です。詳細はURLをご参照ください。", "ref_url" : "http://www.foo.bar.com/faq/001"},
-    { "class_name" : "FAQ002", "answer" : "よくある質問その２の回答です。詳細はURLをご参照ください。", "ref_url" : "http://www.foo.bar.com/faq/002"},
-    { "class_name" : "FAQ003", "answer" : "最後の行の末尾にはコンマをつけないでください。", "ref_url" : ""}`
+
+`
+{ "class_name" : "FAQ001", "answer" : "よくある質問その１の回答です。詳細はURLをご参照ください。", "ref_url" : "http://www.foo.bar.com/faq/001"},
+{ "class_name" : "FAQ002", "answer" : "よくある質問その２の回答です。詳細はURLをご参照ください。", "ref_url" : "http://www.foo.bar.com/faq/002"},
+{ "class_name" : "FAQ003", "answer" : "最後の行の末尾にはコンマをつけないでください。", "ref_url" : ""}
+`
 
 ### 2. 質問データ
 - CSV形式で定義します。データ項目は、質問文, class_name の２つです。
@@ -41,9 +44,12 @@
 - utf-8で保存してください。
 
 #### 設定例
+
+`
 回答データ001に対する質問文その１です, FAQ001
 回答データ001に対する別の表現の質問文です, FAQ001
 回答データ002用の質問文001, FAQ002
+`
 
 ### 【データの登録方法】
 #### 1. 回答データの登録
