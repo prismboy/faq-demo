@@ -85,14 +85,15 @@
 - Node-REDフローエディタを開き、NLCノードのClassifier IDに学習済みのClassifier IDをセットしてDeployする
 
 ### 【コマンドラインの使用方法】
-#### * bashが前提となっています
+#### (bashを実行できる環境が前提となっています)
 
 1. Node-REDトップページの手順５のページで、1～5までのファイルをDLする。
 1. DLした『nlc.env』ファイルを開き、NLCの資格情報からusernameとpasswordを設定する。
+1. 拡張子".bash"のファイルに実行権限を付与する。
 1. 各コマンドの役割は以下の通り
 
 | コマンド | 内容 |
-|-------|------|
+|----------|------|
 | training.bash | 質問データを学習させる。データファイルを引数に実行する。 |
 | classifier.bash | 引数で指定されたClassifier IDの学習状態を確認する。statusが『Available』になれば、学習完了 |
 | list_classifiers.bash | 対象のNLCサービスが学習している全Classifierのリストを表示する |
