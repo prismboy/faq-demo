@@ -60,7 +60,7 @@
 #### 1. 質問データの学習
 
 1. Node-REDアプリを使用する場合
-    1. Node-REDトップページの手順４でリンクされるページで、質問データファイルを指定しSubmitする。
+    1. Node-REDトップページの手順３でリンクされるページで、質問データファイルを指定しSubmitする。
     1. 結果ページにClassifier IDが表示されるので、テキストエディタなどにコピー＆ペーストして保存しておく。
     1. 登録エラーになった場合、Node-REDのフローエディタでdebugにエラーが出力されているか確認する。
     1. 質問データの学習が完了したかどうかは、後述のコマンドラインにて確認する。
@@ -90,9 +90,10 @@
 1. DLした『nlc.env』ファイルを開き、NLCの資格情報からusernameとpasswordを設定する。
 1. 各コマンドの役割は以下の通り
 
-|コマンド|内容|
-|training.bash|質問データを学習させる。データファイルを引数に実行する。|
-|classifier.bash|引数で指定されたClassifier IDの学習状態を確認する。statusが『Available』になれば、学習完了|
-|list_classifiers.bash|対象のNLCサービスが学習している全Classifierのリストを表示する|
-|rm_classifier.bash|引数で指定されたClassifier IDに対応する学習データを削除する|
+| コマンド | 内容 |
+|-------|------|
+| training.bash | 質問データを学習させる。データファイルを引数に実行する。 |
+| classifier.bash | 引数で指定されたClassifier IDの学習状態を確認する。statusが『Available』になれば、学習完了 |
+| list_classifiers.bash | 対象のNLCサービスが学習している全Classifierのリストを表示する |
+| rm_classifier.bash | 引数で指定されたClassifier IDに対応する学習データを削除する |
 
