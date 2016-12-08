@@ -26,7 +26,7 @@
 - CSV形式で定義します。データ項目は、質問文, class_name の２つです。
     - 質問文 : 回答を導き出すための質問を文章で登録します。
     - class_name : 回答データのclass_nameに対応します。
-- 1つのFAQ-IDに複数の質問文を登録することで、Classifierの精度を高めることが出来ます。
+- 1つのclass_nameに複数の質問文を登録することで、Classifierの精度を高めることが出来ます。
 - utf-8で保存してください。
 
 #### 設定例
@@ -59,11 +59,11 @@
 
 #### 1. 質問データの学習
 
-1. コマンドライン(bash)を使用する場合
-    1. Node-REDトップページの手順４のページで、質問データファイルを指定しSubmitする。
+1. Node-REDアプリを使用する場合
+    1. Node-REDトップページの手順４でリンクされるページで、質問データファイルを指定しSubmitする。
     1. 結果ページにClassifier IDが表示されるので、テキストエディタなどにコピー＆ペーストして保存しておく。
     1. 登録エラーになった場合、Node-REDのフローエディタでdebugにエラーが出力されているか確認する。
-
+    1. 質問データの学習が完了したかどうかは、後述のコマンドラインにて確認する。
 
 1. NLC ツールキット(ベータ版)を使用する場合 (米国南部のみ)
     1. BluemixコンソールからNLCサービスの管理画面に遷移し、『Access the beta toolkit』のボタンをクリック
@@ -83,3 +83,16 @@
 ### 【フロー定義】
 
 - Node-REDフローエディタを開き、NLCノードのClassifier IDに学習済みのClassifier IDをセットしてDeployする
+
+### 【コマンドラインの使用方法】
+
+1. Node-REDトップページの手順４のページで、1～4までのファイルをDLする。
+1. DLした『nlc.env』ファイルを開き、NLCの資格情報からusernameとpasswordを設定する。
+1. 各コマンドの役割は以下の通り
+
+|コマンド|内容|
+|training.bash|質問データを学習させる。データファイルを引数に実行する。|
+|classifier.bash|引数で指定されたClassifier IDの学習状態を確認する。statusが『Available』になれば、学習完了|
+|list_classifiers.bash|対象のNLCサービスが学習している全Classifierのリストを表示する|
+|rm_classifier.bash|引数で指定されたClassifier IDに対応する学習データを削除する|
+
