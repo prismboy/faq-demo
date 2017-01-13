@@ -2,10 +2,9 @@ applications:
 - path: .
   memory: 512M
   instances: 1
-  domain: mybluemix.net
-  name: faq-demo
-  host: faq-demo
+  name: [アプリケーション名]
+  host: [アプリケーション名]
   disk_quota: 1024M
   services:
-  - faq-demo-cloudantNoSQLDB
-  - Natural Language Classifier-faq-demo
+  - [アプリケーション名]-cloudantNoSQLDB
+  - Natural Language Classifier-[サービス名]

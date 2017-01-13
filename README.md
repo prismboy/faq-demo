@@ -79,6 +79,15 @@
 1. Node-REDトップページにある手順3のリンクで登録画面を開き、回答データファイルを送信する。
 1. 正常終了のメッセージ画面が表示すれば登録完了。
 1. 登録エラーになった場合、Node-REDのフローエディタでdebugにエラーが出力されているか確認する。
+1. CloudantNoSQLDBを開き、インデックスを定義する。
+    1. データベース "faq-answer"を開き、"Design Documents"の'+'をクリックし、"New Search Index"を選択する。
+    1. 以下の入力フィールドに値を設定する。
+
+| 入力項目 | 値 |
+|---------|----|
+| _design/ | index |
+| Index name | byClassName |
+| Search index function | function (doc) {  index("class_name", doc.class_name, {"store":true});} |
 
 ### 【フロー定義】
 
@@ -98,4 +107,3 @@
 | classifier.bash | 引数で指定されたClassifier IDの学習状態を確認する。statusが『Available』になれば、学習完了 |
 | list_classifiers.bash | 対象のNLCサービスが学習している全Classifierのリストを表示する |
 | rm_classifier.bash | 引数で指定されたClassifier IDに対応する学習データを削除する |
-
