@@ -91,7 +91,11 @@
 
 ### 【フロー定義】
 
-- Node-REDフローエディタを開き、NLCノードのClassifier IDに学習済みのClassifier IDをセットしてDeployする
+- flow_0.jsonからflow_3.jsonまでテキストエディタで開き、それぞれをクリップボードにコピーし、Node-REDフローエディタからインポートする。
+- 各Cloudant NoSQL DBがエラー( ![ノードエラー](./public/images/cloudant_before.jpg) )となっているため、ノードをダブルクリックして開き、ServiceフィールドにCloudantNoSQLDBのサービスr名が入っていることを確認し、完了ボタンをクリックする。
+- Cloudant NoSQL DBノードのエラーがなくなったことを確認する( ![ノードOK](public/images/cloudant_after.jpg) )
+- flow_2のNLCノード( ![NLCノード](public/images/nlc_node.jpg) )のClassifier IDに学習済みのClassifier IDをセット( ![NLC設定](public/images/nlc_classifier_id.jpg) )して完了ボタンをクリックする。
+- 最後にデプロイをクリ行くする。
 
 ### 【コマンドラインの使用方法】
 #### (bashを実行できる環境が前提となっています)
