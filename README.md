@@ -42,7 +42,7 @@
 - JSON形式で定義します。データ項目はclass_name, answer, ref_url の3つです。
     - class_name : 一意なFAQのID
     - answer : 回答内容
-    - ref_url : 詳細な内容に誘導するURL。URLが無い場合は""を指定する。
+    - ref_url : 詳細な内容に誘導するURLと画面表示文言(複数定義可能)。URLが無い場合は[]を指定する。
 - 1つの回答データで、１対の{...}になります。データが複数ある場合は、コンマで区切ります。
     - {...}, {...}, ......
 - utf-8で保存してください。
@@ -50,9 +50,9 @@
 #### 設定例
 
 ~~~~
-{ "class_name" : "FAQ001", "answer" : "よくある質問その１の回答です。詳細はURLをご参照ください。", "ref_url" : "http://www.foo.bar.com/faq/001"},
-{ "class_name" : "FAQ002", "answer" : "よくある質問その２の回答です。詳細はURLをご参照ください。", "ref_url" : "http://www.foo.bar.com/faq/002"},
-{ "class_name" : "FAQ003", "answer" : "最後の行の末尾にはコンマをつけないでください。", "ref_url" : ""}
+{ "class_name" : "FAQ001", "answer" : "よくある質問その１の回答です。詳細はURLをご参照ください。", "ref_url" : [{"title": "詳細はこちら", "url": "http://www.foo.bar.com/faq/001"}]},
+{ "class_name" : "FAQ002", "answer" : "よくある質問その２の回答です。詳細はURLをご参照ください。", "ref_url" : [{"title": "Aの場合はこちら", "url": "http://www.foo.bar.com/faq/002-A"},{"title": "Bの場合はこちら", "url": "http://www.foo.bar.com/faq/002-B"}]},
+{ "class_name" : "FAQ003", "answer" : "最後の行の末尾にはコンマをつけないでください。", "ref_url" : []}
 ~~~~
 
 ### 【データの登録方法】
@@ -91,7 +91,11 @@
 
 ### 【フロー定義】
 
-- Node-REDフローエディタを開き、NLCノードのClassifier IDに学習済みのClassifier IDをセットしてDeployする
+- flow_0.jsonからflow_3.jsonまでテキストエディタで開き、それぞれをクリップボードにコピーし、Node-REDフローエディタからインポートする。
+- 各Cloudant NoSQL DBがエラー( ![ノードエラー](./public/images/cloudant_before.jpg) )となっているため、ノードをダブルクリックして開き、ServiceフィールドにCloudantNoSQLDBのサービス名が入っていることを確認し、完了ボタンをクリックする。
+- Cloudant NoSQL DBノードのエラーがなくなったことを確認する( ![ノードOK](public/images/cloudant_after.jpg) )
+- flow_2のNLCノード( ![NLCノード](public/images/nlc_node.jpg) )のClassifier IDに学習済みのClassifier IDをセット( ![NLC設定](public/images/nlc_classifier_id.jpg) )して完了ボタンをクリックする。
+- 最後にデプロイをクリ行くする。
 
 ### 【コマンドラインの使用方法】
 #### (bashを実行できる環境が前提となっています)
